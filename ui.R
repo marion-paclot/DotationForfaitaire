@@ -58,8 +58,8 @@ ui <- dashboardPage(
     mainPanel(width = 12,
       div(
         class = "credits",
-        tags$a(href = "https://github.com/marion-paclot/TH/issues", "Télécharger la notice explicative")),
-      tags$a(href = "https://github.com/marion-paclot/TH/", "Voir le code source")
+        tags$a(href = "https://github.com/marion-paclot/DotationForfaitaire/issues", "Télécharger la notice explicative")),
+      tags$a(href = "https://github.com/marion-paclot/DotationForfaitaire/", "Voir le code source")
       )
     ),
   
