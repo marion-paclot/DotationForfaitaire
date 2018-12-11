@@ -1,5 +1,5 @@
-# DotationForfaitaire
-Simulateur de la [dotation forfaitaire des communes](http://dotation.etalab.studio)
+# Dotation forfaitaire
+Simulateur de la [dotation forfaitaire des communes](http://dotation.etalab.studio), composante de la dotation globale de fonctionnement (DGF), et principale dotation de l'Etat aux collectivités locales.
 
 Ce travail a été réalisé par la [mission Etalab](https://www.etalab.gouv.fr/) (DINSIC) et la Direction générales des Collectivités Locales. 
 Ce simulateur doit permettre aux maires d'estimer la dotation forfaitaire dont ils bénéficieront au titre de l'année 2019, alors qu'elle n'est définitivement fixée qu'au mois d'avril.
