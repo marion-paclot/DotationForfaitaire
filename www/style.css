@@ -1,0 +1,83 @@
+body, html{height:100%}
+
+.irs-min, .irs-max {
+    color: #333;
+    font-size: 14px; line-height: 1;
+    text-shadow: none;
+    top: 0;
+    padding: 1px 3px;
+    background: rgba(0,0,0,0.1);
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+
+.irs-single {
+    font-size: 14px; line-height: 1;
+    top: 0;
+    padding: 1px 3px;
+}
+
+.shiny-bound-input{
+	margin-top: 10px;
+}
+
+.small-box h3 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    white-space: nowrap;
+    padding: 0;
+}
+
+.main-header .logo {
+	text-align:left;
+}
+
+.skin-blue .left-side, .skin-blue .main-sidebar, .skin-blue .wrapper {
+    background-color: #00203F;
+}
+
+body{
+	font-size:15px
+}
+
+hr {
+    background-color: dimgrey !important;
+    color: dimgrey !important;
+    border: solid 1px dimgrey !important;
+    height: 1px !important;
+}
+
+.box.box-solid.box-warning>.box-header {
+  background:#398FBC;
+  border:#398FBC;
+}
+
+.box.box-solid.box-warning{
+border-bottom-color:#398FBC;
+border-left-color:#398FBC;
+border-right-color:#398FBC;
+border-top-color:#398FBC;
+}
+
+
+.box.box-solid.box-primary>.box-header {
+  background:#00203F;
+  border:#00203F;
+}
+
+.box.box-solid.box-primary{
+border-bottom-color:#00203F;
+border-left-color:#00203F;
+border-right-color:#00203F;
+border-top-color:#00203F;
+}
+
+.box {
+    box-shadow: 0 1px 1px rgba(0,0,0,0);
+}
+
+section.sidebar .shiny-input-container {
+    padding: 0px 15px 0px 15px;
+    white-space: normal;
+}
