@@ -12,7 +12,14 @@ server <- function(input, output, session) {
     return(codeDep)
     }
   )
-
+  
+  # Update inutile mais nécessaire pour avoir un espace vertical analogue entre
+  choix_departement = observe({
+    updateSelectizeInput(session, 'nomDepartement', 
+                         choices = unique(departements$NCC),
+                         server = FALSE)
+  })
+  
   choix_commune = observe({
     # Pour éviter qu'un calcul soit lancé avec un couple (département, commune) incohérent
     freezeReactiveValue(input, 'nomCommune')
@@ -22,12 +29,6 @@ server <- function(input, output, session) {
                          server = FALSE)
   })
   
-  # Update inutile mais nécessaire pour avoir un espace vertical analogue entre
-  choix_departement = observe({
-    updateSelectizeInput(session, 'nomDepartement', 
-                         choices = unique(departements$NCC),
-                         server = FALSE)
-  })
   
   codeCom = reactive({
     nomCommune = input$nomCommune
@@ -56,7 +57,7 @@ server <- function(input, output, session) {
                       max = maxPopDGF2018, 
                       value = PopDGF2018)
   })
-  
+
   # Lien entre les deux champs de population
   champ_population = observeEvent(input$population2019,{
     updateNumericInput(session, 
@@ -73,6 +74,14 @@ server <- function(input, output, session) {
                       value = input$population2019bis)
   })
 
+#######################################
+# Boite d'information commune nouvelle
+  output$telechargerNotice <- downloadHandler(
+    filename = "notice_dotation_forfaitaire_2019.pdf",
+    content = function(file) {
+      file.copy("www/notice_dotation_forfaitaire_2019.pdf", file)
+    }
+  )
 #######################################
   # Boite d'information commune nouvelle
   
