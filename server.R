@@ -163,8 +163,9 @@ server <- function(input, output, session) {
     valeur = calcul()[['DeltaPop']]
     
     phrase = sprintf("Cette composante traduit l'évolution de la population.
-                     Par rapport à l'an passé, votre commune a %s %s habitants",
+                     Par rapport à l'an passé, votre commune a %s %s habitants.",
                      ifelse(valeur>0, "gagné", "perdu"), abs(valeur)) 
+    phrase = gsub(' 1 habitants', ' 1 habitant', phrase)
     phrase = ifelse(valeur == 0, "La population de votre commune n'a pas changé depuis l'an passé.", phrase)
     return(phrase)
   })

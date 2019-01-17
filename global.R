@@ -12,6 +12,9 @@ donnees = read.csv2("donnees_app.csv", header = T, stringsAsFactors = FALSE)
 
 donnees$NomCom = paste(donnees$CodeCom, '-', donnees$NomCom)
 
+## Fonctions ----------------------------------------------------------------
+
+# Modification de la fonction bsModal pour personnaliser le label du bouton
 bsModalFrench = function (id, title, trigger, ..., size) 
 {
   if (!missing(size)) {
@@ -41,9 +44,7 @@ bsModalFrench = function (id, title, trigger, ..., size)
   #htmltools::attachDependencies(bsTag, shinyBSDep)
 }
 
-
-## Fonctions ----------------------------------------------------------------
-# Arrondi 0,5 --> 1 comme dans excel
+# Arrondi 0,5 --> 1
 round2 = function(x, n) {
   posneg = sign(x)
   z = abs(x)*10^n          
@@ -77,44 +78,6 @@ valeurPop2019 = 64.4629119722368
 valeurPoint2019 = 8.6702415130632
 # masseTotale2019 = 184800000
 
-# calculValeurPoint = function(annee, masseTotale, vpDepart, donnees){
-#   annee = 2018 # nmoins1 = 2018
-#   # Potentiel Fiscal par habitant année n-1
-#   coeffPopLog2017 = calculCoeffPop(donnees$PopDGF2017)
-#   
-#   
-#   donnees$PopLog2017 = round2(coeffPopLog2017*donnees$PopDGF2017, 0)
-#   donnees$PF4ParHab2017 = round2(donnees$PF4Taxes2017/PopLog2017, 0)
-#   donnees$PF4ParHab2017[is.infinite(donnees$PF4ParHab2017)] = 0
-#   
-#   pfParHabNational2017 = round2(sum(donnees$PF4Taxes2017)/sum(donnees$PopLog2017[donnees$PF4Taxes2017>0]),6)
-#   
-#   
-#   donnees$exoEcretement =  donnees$PF4ParHab2017-0.75*pfParHabNational2017 <0 | 
-#     donnees$AnneeCreationCom %in% c((annee-2):annee) |         
-#     (donnees$DF2017 == 0 & donnees$PartDynPop == 0)|
-#     donnees$PF4Taxes2017 == 0
-#   
-#   
-#     valeurPoint2018 = 7.2662803
-#   # masseTotale2018 = 160051335
-#   vp = valeurPoint2018
-#   
-#   donnees$PF4ParHab2017[donnees$PopDGF2017 ==0] =0
-#   donnees$contibution = ifelse(donnees$exoEcretement, 0,
-#                                vp*donnees$PopLog2017*(donnees$PF4ParHab2017-0.75*pfParHabNational2017))
-#   donnees$contibution = ifelse(donnees$contibution > 0.01*donnees$RRF2018, 0.01*donnees$RRF2018, donnees$contibution)
-#   donnees$contibution = ifelse(donnees$contibution > donnees$DF2017 + donnees$PartDynPop, donnees$DF2017 + donnees$PartDynPop, donnees$contibution)
-#   sum(donnees$contibution)
-#                               , 
-#                                     0.01*donnees$RRF2018, 
-#                                     max(donnees$DF2017 + donnees$PartDynPop,0))
-#   )
-#                               
-# 
-#   vp = 
-#   
-# }
 
 donnees$PopLog2017 = round2(calculCoeffPop(donnees$PopDGF2017)*donnees$PopDGF2017, 0)
 donnees$PopLog2018 = round2(calculCoeffPop(donnees$PopDGF2018)*donnees$PopDGF2018, 0)
@@ -154,10 +117,6 @@ calculDF = function(annee, AnneeCreationCom, PopDGFnmoins1, PopDGFn,
     MtEcretement = round2(MtEcretement,0)
   }
 
-
-  
-                           
-
   # Binaire commune nouvelle
   ComNouvelle = ifelse(annee-3 <= AnneeCreationCom, T, F)
   
@@ -176,16 +135,16 @@ calculDF = function(annee, AnneeCreationCom, PopDGFnmoins1, PopDGFn,
   
 }
 
-donneesCom = donnees[1,]
-test = calculDF(annee = 2019,
-                AnneeCreationCom = donneesCom$AnneeCreationCom,
-                PopDGFnmoins1 = donneesCom$PopDGF2017,
-                PopDGFn = 170,
-                DFnmoins1 = donneesCom$DF2017,
-                PF4Taxesnmoins1 = donneesCom$PF4Taxes2017,
-                RRFn = donneesCom$RRF2018,
-                valeurPopn = valeurPop2018,
-                valeurPointn = valeurPoint2018,
-                pfParHabNationalnmoins1 = pfParHabNational2017
-                  )
+# donneesCom = donnees[1,]
+# test = calculDF(annee = 2019,
+#                 AnneeCreationCom = donneesCom$AnneeCreationCom,
+#                 PopDGFnmoins1 = donneesCom$PopDGF2017,
+#                 PopDGFn = 170,
+#                 DFnmoins1 = donneesCom$DF2017,
+#                 PF4Taxesnmoins1 = donneesCom$PF4Taxes2017,
+#                 RRFn = donneesCom$RRF2018,
+#                 valeurPopn = valeurPop2018,
+#                 valeurPointn = valeurPoint2018,
+#                 pfParHabNationalnmoins1 = pfParHabNational2017
+#                 )
 
