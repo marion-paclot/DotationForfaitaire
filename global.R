@@ -1,4 +1,3 @@
-library(stringr)
 library(shiny)
 library(shinyBS) # Additional Bootstrap Controls
 library(stringr)
@@ -41,7 +40,6 @@ bsModalFrench = function (id, title, trigger, ..., size)
                                                                                                                                     class = "btn btn-default", `data-dismiss` = "modal", 
                                                                                                                                    "J'ai compris")))))
   return(bsTag)
-  #htmltools::attachDependencies(bsTag, shinyBSDep)
 }
 
 # Arrondi 0,5 --> 1

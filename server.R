@@ -1,8 +1,26 @@
 server <- function(input, output, session) {
   
   # Popup de démarrage
-  toggleModal(session, "avertissement", toggle = "open")
+  query_modal <- modalDialog(
+    title = "Avertissement",
+    HTML(
+          "<div>
+            <p>Ce simulateur a été réalisé au périmètre communal 2018 et ne vaut
+          pas notification du montant de dotation forfaitaire pour 2019.<p/>
+            <p>Veuillez vous reporter à la <a href='./notice_dotation_forfaitaire_2019_attente.pdf'>notice explicative</a>
+          pour comprendre le fonctionnement du simulateur.<p/>
+          </div>"),
+    easyClose = T,
+    footer = tagList(
+      actionButton("fermerAvertissement", "J'ai compris")
+    )
+  )
   
+  # Montrer l'avertissement au démarrage
+  showModal(query_modal)
+  observeEvent(input$fermerAvertissement, {
+    removeModal()
+  })
   
   # Adaptation du menu commune en fonction du département sélectionné
   codeDep = reactive({
